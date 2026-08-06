@@ -1,0 +1,184 @@
+{
+  "info": {
+    "name": "Investment Platform API",
+    "description": "MERN Investment & Referral Platform API Collection",
+    "version": "1.0.0"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{accessToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000/api"
+    },
+    {
+      "key": "accessToken",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/auth/register",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"mobile\": \"1234567890\",\n  \"password\": \"password123\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Register with Referral",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/auth/register",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Jane Doe\",\n  \"email\": \"jane@example.com\",\n  \"mobile\": \"0987654321\",\n  \"password\": \"password123\",\n  \"referralCode\": \"REF123\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/auth/login",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"john@example.com\",\n  \"password\": \"password123\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "event": [
+              {
+                "listen": "test",
+                "script": {
+                  "exec": [
+                    "var jsonData = pm.response.json();",
+                    "if (jsonData.data && jsonData.data.accessToken) {",
+                    "    pm.environment.set('accessToken', jsonData.data.accessToken);",
+                    "}"
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "Get Me",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/auth/me"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Plans",
+      "item": [
+        {
+          "name": "List Plans",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/plans"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Investments",
+      "item": [
+        {
+          "name": "Create Investment",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/investments",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"planId\": \"PLAN_ID_HERE\",\n  \"amount\": 1000\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "List Investments",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/investments?page=1&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["investments"],
+              "query": [
+                { "key": "page", "value": "1" },
+                { "key": "limit", "value": "10" }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Dashboard",
+      "item": [
+        {
+          "name": "Get Summary",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/dashboard/summary"
+          }
+        },
+        {
+          "name": "Get Earnings Chart",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/dashboard/earnings-chart?days=30",
+              "host": ["{{baseUrl}}"],
+              "path": ["dashboard", "earnings-chart"],
+              "query": [{ "key": "days", "value": "30" }]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Referrals",
+      "item": [
+        {
+          "name": "Direct Referrals",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/referrals/direct"
+          }
+        },
+        {
+          "name": "Referral Tree",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/referrals/tree?depth=5"
+          }
+        },
+        {
+          "name": "Referral Income",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/referrals/income"
+          }
+        }
+      ]
+    }
+  ]
+}
