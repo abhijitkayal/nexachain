@@ -43,8 +43,8 @@ export const Login = () => {
       <div className="max-w-md w-full relative">
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl shadow-lg shadow-primary-500/25 mb-4">
-            <span className="text-2xl font-bold text-white">IP</span>
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl shadow-lg shadow-primary-500/25 mb-4 overflow-hidden">
+            <img src="/nexachain-logo.jpg" alt="NexaChain" className="h-full w-full object-cover" />
           </div>
           <h1 className="text-3xl font-bold text-gray-900 dark:text-zinc-100 tracking-tight">Welcome back</h1>
           <p className="text-gray-500 dark:text-zinc-400 mt-2">Sign in to your investment dashboard</p>

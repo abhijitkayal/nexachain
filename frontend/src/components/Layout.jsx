@@ -39,16 +39,16 @@ export const Layout = ({ children }) => {
         <div className="flex items-center h-16 px-4 border-b border-slate-200/80 dark:border-zinc-800">
           {!sidebarCollapsed ? (
             <div className="flex items-center gap-2.5 flex-1 min-w-0">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary-600 text-white text-sm font-bold shadow-sm">
-                IP
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary-600 overflow-hidden shadow-sm">
+                <img src="/nexachain-logo.jpg" alt="NexaChain" className="h-full w-full object-cover" />
               </div>
               <h1 className="text-[15px] font-bold text-slate-900 dark:text-white tracking-tight truncate">
-                InvestPro
+                NexaChain
               </h1>
             </div>
           ) : (
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-600 text-white text-sm font-bold shadow-sm mx-auto">
-              IP
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-600 overflow-hidden shadow-sm mx-auto">
+              <img src="/nexachain-logo.jpg" alt="NexaChain" className="h-full w-full object-cover" />
             </div>
           )}
           <button
@@ -156,10 +156,10 @@ export const Layout = ({ children }) => {
             {mobileMenuOpen ? <FiX className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
           </button>
           <div className="flex items-center gap-2">
-            <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary-600 text-white text-xs font-bold">
-              IP
+            <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary-600 overflow-hidden">
+              <img src="/nexachain-logo.jpg" alt="NexaChain" className="h-full w-full object-cover" />
             </div>
-            <h1 className="text-lg font-bold text-slate-900 dark:text-white tracking-tight">InvestPro</h1>
+            <h1 className="text-lg font-bold text-slate-900 dark:text-white tracking-tight">NexaChain</h1>
           </div>
         </div>
         <button
@@ -183,10 +183,10 @@ export const Layout = ({ children }) => {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center gap-2.5 h-16 px-5 border-b border-slate-200/80 dark:border-zinc-800">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-600 text-white text-sm font-bold">
-                IP
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-600 overflow-hidden">
+                <img src="/nexachain-logo.jpg" alt="NexaChain" className="h-full w-full object-cover" />
               </div>
-              <h1 className="text-[15px] font-bold text-slate-900 dark:text-white tracking-tight">InvestPro</h1>
+              <h1 className="text-[15px] font-bold text-slate-900 dark:text-white tracking-tight">NexaChain</h1>
             </div>
             <nav className="px-3 py-4 space-y-0.5">
               {navItems.map((item) => {
